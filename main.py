@@ -119,7 +119,7 @@ async def handle_media_stream(websocket: WebSocket):
             "Authorization": f"Bearer {OPENAI_API_KEY}",
             "OpenAI-Beta": "realtime=v1"
         }
-    ) as mn :
+    ) as openai_ws :
         await initialize_session(openai_ws)
 
         # Connection specific state
