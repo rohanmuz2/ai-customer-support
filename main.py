@@ -241,18 +241,19 @@ async def handle_media_stream(websocket: WebSocket):
 async def send_initial_conversation_item(openai_ws):
     """Send initial conversation item if AI talks first."""
     initial_conversation_item = {
-        "type": "conversation.item.create",
-        "item": {
-            "type": "message",
-            "role": "user",
-            "content": [
-                {
-                    "type": "input_text",
-                    "text": "Greet the user with 'Hello there! I am an AI voice assistant powered by Twilio and the OpenAI Realtime API. You can ask me for facts, jokes, or anything you can imagine. How can I help you?'"
-                }
-            ]
-        }
+    "type": "conversation.item.create",
+    "item": {
+        "type": "message",
+        "role": "user",
+        "content": [
+            {
+                "type": "input_text",
+                "text": "Hello! You have reached AIBros AI-powered appointment assistant. I can help you book an appointment, check availability, or reschedule your visit. Please tell me your name and preferred appointment date and time."
+            }
+        ]
     }
+}
+
     await openai_ws.send(json.dumps(initial_conversation_item))
     await openai_ws.send(json.dumps({"type": "response.create"}))
 
